@@ -1,0 +1,293 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+.hidden {
+    display: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    min-height: 100vh;
+}
+
+.main-content {
+    max-width: 750px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    color: black;
+}
+header {
+    font-size: 1.75em;
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.task-adder-container {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1em;
+    min-height: 20vh;
+   
+}
+.todo-filter-wrap {
+    display: inline-flex;
+    position: relative;
+    /* Ниже омерзительный костыль */
+    margin: 0 0 15px 0;
+    height: 48px;
+}
+/* Убрать дефолтные стили */
+.todo-filter { /* select */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+
+    position: relative;
+    width: 200px;
+    height: 100%;
+    font-size: inherit;
+    font-family: inherit;
+    /* overflow: hidden; */
+    cursor: pointer;
+    padding: .75em;
+}
+.todo-filter-wrap::after {
+    content: "\25BC";
+    position: absolute;
+    background-color:midnightblue;
+    padding: .75em;
+    color: white;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+    height: 100%;
+}
+
+.task-adder {
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    height: 3em;
+    background-color: white;
+    padding: .5em;
+    margin-bottom: 1em;
+    margin-right: .5em;
+    
+} 
+.text-input {
+    padding: 0.25em 0;
+    border: none;
+    flex-grow: 1;
+    font-family: inherit;
+    font-size: 1em;
+}
+.submit-btn,
+.done-btn,
+.delete-btn,
+.urgent-btn {
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    padding: .25em;
+}
+.submit-btn {
+    color: #2575fc;
+    background-color: white;
+    padding: 0;
+}
+.done-btn {
+    color: white;
+    background-color: green;
+}
+.delete-btn {
+    color: white;
+    background-color: red;
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.urgent-btn {
+    color: black;
+    background-color: yellow;
+}
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 0.5em;
+    border-top-left-radius: 0;
+    border-top-right-radius: 1em;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+.task {
+    display: flex;
+    margin-bottom: .5em;
+    /* transition-property: color, opacity, transform, order; */
+    transition-property: all;
+    transition-duration: 250ms;
+    transition-timing-function: ease-out;
+    border-radius: 1em;
+    box-shadow: 0 .125em .25em 0 black;
+}
+
+.categories {
+    /* background-color: green; */
+    display: flex;
+    margin: 0;
+    align-items: flex-end;
+
+    /* margin: 0; */
+    /* padding: 0; */
+}
+.category {
+    display: inline-block;
+    min-width: 5em;
+    /* padding: 0.5em; */
+    color: black;
+    background-color: rgb(201, 201, 201);
+    border-top-left-radius: .5em;
+    border-top-right-radius: .5em;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: .8em;
+    border: 1px solid grey;
+    align-self: stretch;
+}
+.task:last-of-type {
+    margin-bottom: 0;
+}
+
+.category.active {
+    background-color: white;
+    color: black;
+    border: none;
+    cursor: auto;
+}
+.add-category {
+    margin: 0 .25em;
+    align-self: center;
+    font-size: 1.5em;
+    background-color: transparent;
+    color: rgba(255, 255, 255, .5);
+    cursor: pointer;
+    transition-property: color;
+    transition-duration: 150ms;
+}
+.add-category:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.task-text {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding: .5em;
+    background-color: white;
+    color: black;
+    font-size: 1.25em;
+    text-align: left;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+}
+.urgent .urgent-btn,
+.urgent .task-text {
+    background-color: yellow;
+}
+
+.done  {
+    background-color: white;
+    color: rgb(193, 193, 193);
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+.fall {
+    transform: rotate(15deg) translateY(8rem);
+    opacity: 0;
+    transition-duration: 250ms;
+}
+
+.done .task-text {
+    text-decoration: line-through;
+}
+
+.remove-all-btn {
+    font-family: 'Raleway', sans-serif;
+    padding: 0.25em;
+    border-radius: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    transition-property: background-color;
+    transition-duration: 100ms;
+}
+.remove-all-btn:hover {
+    background-color: #BBB;
+}
+/* .text-input {
+    font-size: inherit;
+    font-family: inherit;
+    padding: .25em;
+} */
+
+@media (max-width: 720px) {
+    .main-content {
+        padding: 0 .5em;
+    }
+}
+.rename-category-wrap {
+    color: white;
+    font-size: 1.25em;
+}
+
+.message {
+    text-align: center;
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 1em;
+    padding: 1em;
+    margin: 1em;
+    max-width: 200px;
+    white-space: pre-wrap;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    transition-property: all;
+    transition-duration: 3000ms;
+}
+.appear {
+    display: block;
+    opacity: 100%;
+    transition-duration: 1000ms;
+}
+.disappear {
+    opacity: 0%;
+    transition-duration: 1000ms;
+}
+
+#bug-tracker {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: brown;
+    color: white;
+    padding: 0;
+    font-family: Arial;
+}
+#bug-tracker pre {
+    padding: 0;
+}

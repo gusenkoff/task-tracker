@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet"> 
+    <title>Список задач</title>
+</head>
+<body>
+    <header>
+        <h1>Список задач</h1>
+    </header>
+    <main class="main-content">
+        <div class="task-adder-container">
+            <div class="task-adder">
+                <input type="text" class="task-input text-input" placeholder="Введите текст задачи" autofocus/>
+                <button class="submit-btn" id="add-task-button" type="submit" onclick="addTask()"><i class="fas fa-plus-square"></i></button>
+            </div>
+            <div class="todo-filter-wrap">
+                <select name="todo-filter" class="todo-filter" id="todo-filter" autocomplete="off">
+                    <option value="all" id="show-all-option" class="todo-filter-option">Все</option>
+                    <option value="uncompleted" id="show-uncompleted-option" class="todo-filter-option">Актуальные</option>
+                </select>
+            </div>
+        </div>
+            <div class="categories" id="categories">
+            </div>
+            <div class="tasks-list">
+            </div>
+            <br>
+            <button class="remove-all-btn" onclick="clearAll()">Cброс</button>
+            <button class="remove-all-btn" onclick="addSomeTasks()">+ 4 задачки</button>
+            <button class="remove-all-btn" onclick="removeCategory()">Удалить категорию</button>
+            <button class="remove-all-btn" onclick="showRenameInterface()">Переименовать</button>
+            <div id="rename-category-wrap" class="rename-category-wrap hidden">
+                <label for="rename-category-input" style="color:black">Новое название категории: 
+                    <input type="text" name="rename-category" id="rename-category-input" class="text-input" placeholder="20 символов max" maxlength="20">
+                    <button onclick="renameCategory(currentCategory)" id="rename-category-button" class="remove-all-btn">OK</button>
+                    <button onclick="hideRenameInterface()" id="rename-category-button-cancel" class="remove-all-btn">Отмена</button>
+                </label>
+            </div>
+    </main>
+    <div id="bug-tracker"></div>
+    <div class="message-wrapper">
+        <div class="message hidden"></div>
+    </div>
+<script src="main.js"></script>
+</body>
+</html>
